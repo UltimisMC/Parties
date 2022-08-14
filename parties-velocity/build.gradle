@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group "$parent.group"
+version "$parent.version"
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'papermc'
+        url 'https://repo.papermc.io/repository/maven-public/'
+    }
+}
+
+dependencies {
+    compileOnly 'com.velocitypowered:velocity-api:3.0.1'
+    annotationProcessor 'com.velocitypowered:velocity-api:3.0.1'
+    implementation project(':parties-api')
+    implementation project(':parties-common')
+    compileOnly 'net.luckperms:api:5.4'
+}

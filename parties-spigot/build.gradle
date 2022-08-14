@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group "$parent.group"
+version "$parent.version"
+
+compileJava {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'codemc-nms'
+        url 'https://repo.codemc.org/repository/nms'
+    }
+    flatDir {
+        dir 'libs'
+    }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot:1.8.8-R0.1-SNAPSHOT'
+    implementation project(':parties-api')
+    implementation project(':parties-common')
+    compileOnly files('libs/bedwars-plugin.jar')
+}

@@ -1,0 +1,7 @@
+name: UltimisParties
+author: AkramL
+version: ${project.version}
+main: com.ultimismc.parties.spigot.PartiesSpigot
+description: An integration to synchronize parties between proxy and backend servers.
+softdepend:
+  - BedWars1058

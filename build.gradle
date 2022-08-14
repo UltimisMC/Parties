@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group 'com.ultimismc'
+version '1.0-BETA'
+
+allprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    compileJava {
+        options.encoding = 'UTF-8'
+    }
+
+    dependencies {
+        annotationProcessor 'org.projectlombok:lombok:1.18.24'
+        compileOnly 'org.projectlombok:lombok:1.18.24'
+        implementation 'redis.clients:jedis:4.2.3'
+        implementation 'com.google.code.gson:gson:2.9.0'
+    }
+
+    assemble.dependsOn('shadowJar')
+
+}
+
+repositories {
+    mavenCentral()
+}
