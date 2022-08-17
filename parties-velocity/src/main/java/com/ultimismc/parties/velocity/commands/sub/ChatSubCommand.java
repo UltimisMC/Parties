@@ -2,6 +2,8 @@ package com.ultimismc.parties.velocity.commands.sub;
 
 import com.ultimismc.parties.api.ApiProvider;
 import com.ultimismc.parties.api.PartiesAPI;
+import com.ultimismc.parties.api.party.PartyRole;
+import com.ultimismc.parties.api.player.PartyPlayer;
 import com.ultimismc.parties.velocity.PartiesVelocity;
 import com.ultimismc.parties.velocity.commands.SubCommand;
 import com.ultimismc.parties.velocity.util.Utils;
@@ -42,11 +44,16 @@ public class ChatSubCommand implements SubCommand {
             );
             return;
         }
+        PartyPlayer partyPlayer = party.getMember(player.getUniqueId());
+        String prefix = partyPlayer.getRole() == PartyRole.LEADER
+                ? "&e✬ " :
+                partyPlayer.getRole() == PartyRole.MODERATOR
+                ? "&b✬ " : "";
         String message = String.join(" ", args);
         PartiesVelocity.getInstance().getServer().getAllPlayers().forEach(online -> {
             if (party.isMember(online.getUniqueId())) {
                 online.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize(
-                        "&9&l[PARTY] " + Utils.getColor(player.getUniqueId()) + player.getUsername()
+                        "&9&l[PARTY] " + prefix + Utils.getColor(player.getUniqueId()) + player.getUsername()
                                 + "&8 »&f "
                 ).append(LegacyComponentSerializer.legacyAmpersand().deserialize(message)));
             }
