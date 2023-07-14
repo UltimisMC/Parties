@@ -13,9 +13,7 @@ import com.ultimismc.parties.common.connection.redis.RedisConnection;
 import com.ultimismc.parties.common.platform.PlatformPlugin;
 import com.ultimismc.parties.spigot.redis.PartiesChannel;
 import com.ultimismc.parties.spigot.wrapper.PartiesApiWrapper;
-import com.ultimismc.parties.spigot.wrapper.PartyInit;
 import com.ultimismc.parties.spigot.wrapper.PartyPlayerWrapper;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -45,9 +43,6 @@ public class PartiesSpigot extends JavaPlugin implements PlatformPlugin<JavaPlug
         }
         initParties();
         redisConnection.subscribe(new PartiesChannel());
-        if (Bukkit.getPluginManager().isPluginEnabled("BedWars1058")) {
-            new PartyInit();
-        }
     }
 
     @Override

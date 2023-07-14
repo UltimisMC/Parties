@@ -20,3 +20,10 @@ dependencies {
     implementation project(':parties-common')
     compileOnly 'net.luckperms:api:5.4'
 }
+
+shadowJar {
+    relocate("redis.clients.jedis", "com.ultimismc.parties.lib.jedis")
+    relocate("org.json", "com.ultimismc.parties.lib.json")
+    relocate("org.apache", "com.ultimismc.parties.lib.apache")
+    relocate("com.google.gson", "com.ultimismc.parties.lib.gson")
+}
